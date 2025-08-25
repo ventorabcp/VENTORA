@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VENTORA — The Commerce Carnival</title>
+
+  <!-- Orbitron font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Replace these with the exact hex codes from your PDF if you want exact match */
+      --bg: #08090b;          /* dark background */
+      --primary: #e5930f;     /* accent / neon aqua */
+      --secondary: #763904;   /* warm gold/yellow accent */
+      --muted: #b5b6b4;
+      --card-bg: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --radius: 20px;
+      --max-width: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html { scroll-behavior: smooth; }
+    body{
+      
+      margin:0;
+      font-family: "Orbitron", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #0c0d10 100%);
+      color: white;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      min-height:100vh;
+    }
+
+    /* Page container */
+    .container{
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    /* NAV */
+    header{
+      position: sticky;
+      top:0;
+      z-index: 60;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .navwrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      width: min(94%, var(--max-width));
+      margin: 6px auto;
+      padding: 8px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      display:grid;place-items:center;
+      font-weight:700;color:#0b0b0b;font-size:18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .brand img{height:44px;width:auto;}
+    .brand h1{font-size:18px; margin:0; letter-spacing:1px; font-weight:600}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+    nav a{
+      color:var(--muted); text-decoration:none; font-size:14px; padding:10px 12px;
+      border-radius:10px; transition: all 180ms cubic-bezier(.2,.9,.2,1);
+    }
+    nav a:hover, nav a.active{
+      color:white; background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Mobile nav toggle */
+    .menu-toggle{display:none}
+    @media (max-width:880px){
+      nav ul{display:none; position:absolute; right:12px; top:68px; flex-direction:column;
+            background:rgba(0,0,0,0.6); padding:12px; border-radius:12px; width:200px}
+      .menu-toggle{display:block; cursor:pointer; color:var(--muted); font-size:18px; padding:10px}
+      nav.open ul{display:flex}
+    }
+
+    /* HERO / HOME */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 200px;
+      gap: 28px;
+      align-items:center;
+      padding: 56px 0 80px;
+    }
+    .hero-left h2{
+      font-size: clamp(34px, 5vw, 56px);
+      line-height:0.95;
+      margin: .5px;
+      letter-spacing:1px;
+      color:linear-gradient;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+    }
+    .subtitle{ color:var(--muted); margin-top:12px; font-size:15px; max-width:680px}
+
+    .cta-row{ margin-top:22px; display:flex; gap:12px; flex-wrap:wrap }
+    .btn{
+      border:0; cursor:pointer; padding:12px 18px; border-radius:12px; font-weight:700;
+      transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms;
+    }
+    .btn-primary{
+      background: linear-gradient(90deg,var(--primary),#a14a04);
+      color:#061016; box-shadow: 0 10px 30px rgba(0,239,255,0.09);
+    }
+    .btn-outline{
+      background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted);
+    }
+    .btn:active{ transform: translateY(2px) }
+
+    /* HERO RIGHT — poster preview */
+    .hero-right{
+      background: var(--card-bg);
+      border-radius: 16px; padding:12px;
+      display:grid; gap:10px; justify-items:center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    
+
+    /* ABOUT */
+    section{ padding: 72px 0; }
+    .section-title{
+      display:flex; align-items:center; gap:14px; margin-bottom:16px;
+    }
+    .section-title h3{ margin:0; letter-spacing:1px; font-size:20px }
+    .about-grid{ display:grid; grid-template-columns: 1fr 100px; gap:0px; align-items:center }
+    .about-card{ background:var(--glass); padding:18px; border-radius:12px; box-shadow: 0 8px 30px rgba(0,0,0,0.5) }
+
+    h5 {
+  font-size: 18px;   /* adjust size */
+  font-weight: 600;  /* keeps it bold but elegant */
+  margin: 12px 0;    /* spacing top/bottom */
+  letter-spacing: 0.5px;
+}
+
+
+
+    
+
+    /* EVENTS */
+    .events-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+   .event-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.03);
+
+  /* uniform size for all cards */
+  aspect-ratio: 3 / 4;
+}
+
+.event-card .img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.95) contrast(1.05) brightness(0.78);
+  transition: transform 420ms ease;
+}
+    .event-card .overlay{
+      position:relative; z-index:2; padding:16px; backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.45));
+    }
+    .event-card h4{ margin:0 0 6px 0; letter-spacing:0.8px }
+    .event-card p{ margin:0; font-size:13px; color:var(--muted) }
+
+    .event-card:hover{ transform: translateY(-10px); box-shadow: 0 18px 40px rgba(0,0,0,0.7) }
+    .event-card:hover .img{ transform: scale(1.08) }
+
+    /* CARD BUTTON / ripple effect */
+    .card-cta{ margin-top:10px; display:inline-flex; gap:8px; align-items:center }
+    .small-btn{
+      padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.06); color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03); font-weight:700; font-size:13px;
+    }
+
+    /* CONTACT */
+    .contact-grid{ display:grid; grid-template-columns: 1fr 300px; gap:18px; align-items:start }
+    .contact-card{ padding:16px; background:var(--glass); border-radius:12px }
+    .contact-item{ display:flex; gap:12px; align-items:center; padding:10px 0; border-bottom:1px dashed rgba(255,255,255,0.03) }
+    .contact-item:last-child{ border-bottom:0 }
+    .contact-item img{width:44px;height:44px;object-fit:contain}
+
+    .icon{
+      width:44px;height:44px;border-radius:10px; display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#051015; font-weight:800;
+    }
+
+    a {
+    text-decoration: none; /* removes underline */
+    color: inherit;        /* makes text use surrounding text color */
+}
+
+
+    /* FOOTER */
+    footer{ padding:26px 0; height: 5px; text-align:center; color:var(--muted); font-size:13px;  }
+
+    /* Responsive tweaks */
+    @media (max-width:1100px){ .hero{ grid-template-columns: 1fr; } .about-grid{ grid-template-columns: 1fr } }
+    @media (max-width:640px){
+      .hero-right .poster{ height:240px }
+      .contact-grid{ grid-template-columns: 1fr }
+      .events-grid{ grid-template-columns: 1fr 1fr }
+    }
+    @media (max-width:420px){
+      .events-grid{ grid-template-columns: 1fr }
+      .logo{ width:40px;height:40px }
+      .brand h1{ font-size:15px }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- custom cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- header / nav -->
+  <header aria-label="Main header">
+    <div class="navwrap">
+      <div class="brand" onclick="scrollToSection('home')">
+        <img src="images/logo.png" alt="VENTORA Logo">
+        <div>
+          <h1>VENTORA</h1>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">The Commerce Carnival</div>
+        </div>
+      </div>
+
+      <nav id="mainNav" aria-label="Primary navigation">
+        <div class="menu-toggle" id="menuToggle" aria-hidden="true">☰</div>
+        <ul>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#events" class="nav-link">Events</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO / HOME -->
+    <section id="home" class="container hero" aria-labelledby="home-title">
+      <div class="hero-left">
+        <h2 id="home-title">Get ready to witness the ultimate celebration of talent, creativity and youth</h2>
+        <p class="subtitle">VENTORA — The Commerce Carnival presented by The Department of B.Com Professional Christ College (Autonomous) Irinjalakuda. A power-packed fest with vibrant events, thrilling competitions and electrifying performances.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" onclick="scrollToSection('events')">Explore Events</a>
+          <a class="btn btn-outline" href="D:\work\web\pdf.pdf" target="_blank" rel="noopener">Download Brochure</a>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:30px">
+          <div>Sept 12, 2025</div>
+          <div>| Christ College, Irinjalakuda</div>
+        </div>
+      </div>
+      
+
+    
+    </section>
+
+<!-- ABOUT -->
+<section id="about" class="container" aria-labelledby="about-title">
+  <div class="section-title">
+    <h3 id="about-title">About Us</h3>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <h4 style="color:var(--primary);margin-bottom:8px;">
+        Learn about Christ College (Autonomous), Irinjalakuda and Ventora 2025 — The Commerce Carnival
+      </h4>
+
+      <h5 style="margin-top:12px;color:white;">About Our College</h5>
+      <p style="color:var(--muted)">
+        <strong>Christ College (Autonomous), Irinjalakuda</strong> is a distinguished Syro-Malabar Catholic institution run by the Carmelites of Mary Immaculate (CMI). Founded in 1956 by<strong> Fr. Gabriel Chiramel CMI</strong>, it was inaugurated the following year and initially affiliated to the University of Kerala, later transitioning to the University of Calicut.
+      </p>
+      <p style="color:var(--muted)">
+        In 2015, it was granted autonomous status, and in 2022, it proudly became the first institution in Thrissur district to be accredited with an A++ grade by NAAC. Guided by its motto <strong>“Jeevitha Prabha”</strong> (“Light of Life”), Christ College continues to inspire excellence in academics, research, and holistic development under the leadership of <strong>Rev. Dr. Jolly Andrews CMI</strong>, Principal.
+      </p>
+      <p style="color:var(--muted)">
+        Among its most dynamic departments is the <strong>B.Com Professional Department</strong>, a vibrant hub for aspiring commerce professionals at Christ College (Autonomous), Irinjalakuda. Established in 2017 under the Self-Financing Commerce wing, the department was designed to provide a strong academic foundation for students aiming to excel in competitive professional qualifications such as CA, CMA, ACCA and CS. The department thrives under the guidance of Dr. K O Francis, Head of the Department (B.Com Professional).
+      </p>
+      <p style="color:var(--muted)">
+        With a curriculum that blends rigorous theoretical knowledge and practical skill-building, the department offers a three-year undergraduate program affiliated to the University of Calicut.
+      </p>
+
+      <h5 style="margin-top:18px;color:white;">Goal of VENTORA 2025</h5>
+      <ul style="color:var(--muted);margin-top:6px;list-style:none;padding-left:0;">
+        <li> <strong>Unshakable Spirit (Resilience):</strong> The arena tests more than skill; it tests grit. Participants face rapid shifts, high-pressure challenges, and unexpected twists, proving that true champions adapt, endure, and rise stronger each time.</li>
+        <li><strong>The Strategist’s Mind (Critical Thinking):</strong> Every decision is a move on the grand chessboard of commerce. Quick logic, sharp analysis, and the ability to spot hidden opportunities set the victors apart.</li>
+        <li> <strong>Power in Unity (Collaboration):</strong> No empire is built alone. Diverse talents join forces, combining strengths, perspectives, and expertise to conquer challenges and craft success stories together.</li>
+        <li> <strong>The Spark of Creation (Innovation):</strong> Ideas are currency and originality is power. From daring solutions to disruptive concepts, innovation fuels the future of commerce in ways the world hasn’t seen before.</li>
+      </ul>
+
+      <h5 style="margin-top:18px;color:white;">VENTORA 2025 — The Commerce Carnival</h5>
+      <p style="color:var(--muted)">
+        Ventora 2025 — The Commerce Carnival, themed <strong>"Igniting Minds, Shaping Futures"</strong>, isn’t just another business fest — it’s a living arena where ambition meets action. The moment you step in, you’re no longer just a participant; you’re a strategist, a negotiator, a visionary. Every event is a pressure chamber—markets rise and fall in minutes, alliances are built and broken, innovations are born from thin air.
+      </p>
+      <p style="color:var(--muted)">
+        Here, resilience isn’t just a word — it’s your lifeline when the odds tilt against you. Critical thinking is the compass that guides you through complex business mazes. Collaboration turns competitors into allies when the stakes demand it. And innovation? That’s your weapon to rewrite the rules before anyone else does.
+      </p>
+      <p style="color:var(--muted)">
+        Ventora 2025 is where the future of commerce is not just discussed — it’s forged in real time, by those bold enough to shape it.
+      </p>
+
+      <h5 style="margin-top:18px;color:white;">Why Ventora is Different</h5>
+      <ul style="color:var(--muted);margin-top:6px;list-style:none;padding-left:0;">
+        <li> <strong>A Strong, Unifying Theme:</strong> “Outbreak — Rising from Ruins” transforms the campus into a post-apocalyptic world.</li>
+        <li><strong>Commerce Meets Creativity:</strong> A fusion of business acumen with artistic expression.</li>
+        <li> <strong>Real-World Skill Testing:</strong> Simulations of real business crises, not just textbook cases.</li>
+        <li><strong>Immersive Set & Experience:</strong> Film-like production quality in stage design, props, and lighting.</li>
+        <li><strong>National-Level Participation:</strong> Drawing top talent from across India.</li>
+        <li><strong>Balanced Entertainment & Learning:</strong> Skills, perspectives, and networks alongside memories.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+    <!-- EVENTS -->
+    <section id="events" class="container" aria-labelledby="events-title">
+      <div class="section-title">
+        <h3 id="events-title">Our Events</h3>
+      </div>
+
+      <div class="events-grid" id="eventsGrid">
+
+        <!-- Event cards (7) - replace background-image url() with your own event images -->
+        <article class="event-card" onclick="goEvent(1)" role="button" tabindex="0" aria-label="Open event 1">
+          <div class="img" style="background-image:url('images/3.png')"></div>
+          <div class="overlay">
+            <h4>Elite 11 Auction</h4>
+            <div class="card-cta">
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(2)" role="button" tabindex="0" aria-label="Open event 2">
+          <div class="img" style="background-image:url('images/2.png')"></div>
+          <div class="overlay">
+            <h4>Connectopia</h4>
+           </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(3)" role="button" tabindex="0" aria-label="Open event 3">
+          <div class="img" style="background-image:url('images/5.png')"></div>
+          <div class="overlay">
+            <h4>PES Fiesta 2025</h4>
+           </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(4)" role="button" tabindex="0" aria-label="Open event 4">
+          <div class="img" style="background-image:url('images/7.jpg')"></div>
+          <div class="overlay">
+            <h4>AD-Mad show</h4>
+           </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(5)" role="button" tabindex="0" aria-label="Open event 5">
+          <div class="img" style="background-image:url('images/1.png')"></div>
+          <div class="overlay">
+            <h4>Bizverse Rivalry</h4>
+            </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(6)" role="button" tabindex="0" aria-label="Open event 6">
+          <div class="img" style="background-image:url('images/4.png')"></div>
+          <div class="overlay">
+            <h4>Grand Revial</h4>
+            </div>
+        </article>
+
+        <article class="event-card" onclick="goEvent(7)" role="button" tabindex="0" aria-label="Open event 7">
+          <div class="img" style="background-image:url('images/6.png')"></div>
+          <div class="overlay">
+            <h4>Ladder To Legacy </h4>
+            </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container" aria-labelledby="contact-title">
+      <div class="section-title">
+        <h3 id="contact-title">Contact Us</h3>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-item">
+              <div class="contact-item"><img src="images/ph.png" alt="Phone"></div>
+            <div>
+              <div style="font-weight:700">Phone</div>
+              <a href="tel:+91 9037402347"> <div style="color:var(--muted)">Farhan: 9037402347 </div></a>
+              <a href="tel:+91 8089965436"> <div style="color:var(--muted)"> Misiriya: 8089965436 </div></a>
+              <a href="tel:+91 8943283238"> <div style="color:var(--muted)"> Vinayak: 8943283238 </div></a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+              <div class="contact-item"><img src="images/email.png" alt="Email"></div>
+            <div>
+              <div style="font-weight:700">Email</div>
+             <a href="mailto:ventora.bcp@gmail.com"><div  style="color:var(--muted)">ventora.bcp@gmail.com</div></a>
+              
+            </div>
+          </div>
+
+          <div class="contact-item">
+              <div class="contact-item"><img src="images/whatsapp.png" alt="WhatsApp"></div>
+            <div>
+              <div style="font-weight:700">WhatsApp</div>
+              <a href="https://wa.me/9037402347" target="_blank"><div style="color:var(--muted)">+91 9037402347</div></a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item"><img src="images/insta.png" alt="Instagram"></div>
+            <div>
+              <div style="font-weight:700">Instagram</div>
+              <a href="https://www.instagram.com/ventora_2025?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><div style="color:var(--muted)">@ventora_2025</div></a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <strong>VENTORA</strong> — The Commerce Carnival</div>
+        <div style="color:var(--muted)">Designed by  ea </div>
+</div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Smooth scroll to section (works with header brand click too)
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 68; // header offset
+      window.scrollTo({top: y, behavior: "smooth"});
+    }
+
+    // Event card action (redirect to separate event pages)
+    function goEvent(n){
+      // adjust to your event page names; we use event1.html..event7.html placeholders
+      window.location.href = 'events/event' + n + '.html';
+    }
+
+    // make nav links active on scroll
+    const navlinks = document.querySelectorAll('.nav-link');
+    const sections = ['home','about','events','contact'].map(id => document.getElementById(id));
+    window.addEventListener('scroll', ()=> {
+      const top = window.scrollY + 90;
+      sections.forEach((sec, i) => {
+        if(!sec) return;
+        if(top >= sec.offsetTop && top < sec.offsetTop + sec.offsetHeight){
+          navlinks.forEach(n => n.classList.remove('active'));
+          navlinks[i].classList.add('active');
+        }
+      });
+    });
+
+    // mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', ()=> mainNav.classList.toggle('open'));
+
+    // accessible keyboard on event cards
+    document.querySelectorAll('.event-card').forEach((card, idx) => {
+      card.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') goEvent(idx+1);
+      });
+    });
+
+    // custom cursor
+    const cursor = document.getElementById('cursor');
+    let mouseX=0, mouseY=0;
+    document.addEventListener('mousemove', (e)=>{
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    // add click animation to cursor
+    document.addEventListener('mousedown', ()=> { cursor.classList.add('click') });
+    document.addEventListener('mouseup', ()=> { cursor.classList.remove('click') });
+
+    // click / hover ripple on interactive elements
+    document.addEventListener('click', e => {
+      const target = e.target;
+      if(target.closest('.btn') || target.closest('.small-btn') || target.closest('.event-card')){
+        ripple(e, target.closest('.event-card') || target.closest('button') || target);
+      }
+    });
+
+    function ripple(e, el){
+      if(!el) return;
+      const r = document.createElement('span');
+      r.style.position = 'absolute';
+      r.style.pointerEvents = 'none';
+      r.style.width = r.style.height = '12px';
+      r.style.borderRadius = '50%';
+      r.style.left = (e.offsetX || 0) + 'px';
+      r.style.top = (e.offsetY || 0) + 'px';
+      r.style.background = 'rgba(255,255,255,0.12)';
+      r.style.transform = 'translate(-50%,-50%) scale(0.3)';
+      r.style.transition = 'all 520ms cubic-bezier(.2,.9,.2,1)';
+      el.style.position = el.style.position || 'relative';
+      el.appendChild(r);
+      requestAnimationFrame(()=> {
+        r.style.transform = 'translate(-50%,-50%) scale(10)';
+        r.style.opacity = '0';
+      });
+      setTimeout(()=> r.remove(), 600);
+    }
+
+    // contact form stub (no backend) - show simple success toast
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const btn = contactForm.querySelector('button');
+      btn.textContent = 'Sending...';
+      setTimeout(()=>{
+        btn.textContent = 'Send';
+        alert('Thanks! Message recorded locally. Hook up your backend to process submissions.');
+        contactForm.reset();
+      }, 700);
+    });
+
+    // lazy load poster background (nice smooth reveal)
+    window.addEventListener('load', ()=>{
+      const poster = document.querySelector('.poster');
+      const img = new Image();
+      img.src = 'images/hero-poster.jpg';
+      img.onload = ()=> { poster.style.backgroundImage = `url('${img.src}')`; poster.style.opacity = 1 }
+    });
+
+  </script>
+</body>
+</html>
