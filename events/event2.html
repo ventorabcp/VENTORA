@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elite 11 Auction — Ventora</title>
+
+<!-- Orbitron Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #08090b;
+  --primary: #e5930f;
+  --secondary: #763904;
+  --muted: #b5b6b4;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 20px;
+  --max-width: 1100px;
+}
+
+body{
+  margin:0;
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #0c0d10 100%);
+  color:white;
+  line-height:1.4;
+}
+
+/* Container */
+.container{
+  width: min(92%, var(--max-width));
+  gap: 16px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+nav {
+  width: min(92%, var(--max-width));
+  margin: auto;
+  padding: 12px 0; /* match main navbar */
+  display: flex;
+  align-items: center;
+}
+
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+nav a:hover{
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+/* Hero Image */
+.hero-img {
+  margin: 20px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 600px; /* Limit the size */
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Title */
+h1{
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 20px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subheading {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted);
+  margin-top: 1px;
+  font-weight: 400;
+}
+
+
+/* Event Details Grid */
+.details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.detail-card{
+  background: var(--glass);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.detail-card h3{
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.detail-card p{
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+/* Description */
+.description{
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(90deg,var(--primary),#a14a04);
+  color: #061016;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+footer{
+  padding: 20px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html#events">Back to Events</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero-img">
+    <img src="../images/2.png" alt="Elite 11 Auction">
+  </div>
+
+  <!-- Title -->
+  <h1>Connectopia</h1>
+  <h2 class="subheading">Empowering minds through play</h2>
+
+  <!-- Event Details -->
+  <div class="details">
+    <div class="detail-card">
+      <h3>Registration fees</h3>
+      <p>₹100 per person (min 4 person)</p>
+    </div>
+    <div class="detail-card">
+      <h3>Registration ends on </h3>
+      <p>8 Sep 2025</p>
+    </div>
+    <div class="detail-card">
+      <h3>Prize pool </h3>
+      <p> ₹4000 </p>
+    </div>
+  </div>
+
+<!-- Description -->
+<div class="description">
+  <p>
+    <strong>Description:</strong> HR Fest is an exciting platform designed to celebrate creativity, teamwork, and leadership through engaging activities and competitions. This HR event brings together aspiring professionals to explore the evolving role of human resource management in today's workplace.
+  </p>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Puzzle Game</h3>
+  <ul>
+    <li>A puzzle sheet containing HR-related questions will be provided.</li>
+    <li>Participants should complete the puzzle within the time limit (15 minutes).</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;">Role Play</h3>
+  <ul>
+    <li>Simulate real-world HR scenarios to evaluate decision-making, communication, and conflict resolution skills.</li>
+    <li>Participants can play individually or in teams of 2–3.</li>
+    <li>Time limit will be provided to complete the scenario.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Document Hunt</h3>
+  <ul>
+    <li>Find folders containing various HR documents in the designated area.</li>
+    <li>Study the documents within 10 minutes.</li>
+    <li>A questionnaire will be conducted in the next 10 minutes.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Interview</h3>
+  <ul>
+    <li>Test interview skills, presence of mind, and ability to handle real-life interview situations.</li>
+    <li>Each candidate will face a mock interview by judges or assigned interviewers.</li>
+    <li>Preparation time: 2–3 minutes after receiving the interview type or scenario.</li>
+    <li>Interview duration: 5–7 minutes per candidate.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Treasure Hunt</h3>
+  <ul>
+    <li>Solve clues and complete tasks to find the final hidden "treasure" before other teams.</li>
+    <li>Team members must remain together during the entire game.</li>
+    <li>The hunt will consist of a series of clues:
+      <ul>
+        <li>Solve riddles.</li>
+        <li>Complete the task given by HR coordinators.</li>
+        <li>Collect the next clue to proceed.</li>
+      </ul>
+    </li>
+    <li>Teams must not split or share clues with other teams.</li>
+    <li>Complete within the time limit.</li>
+  </ul>
+</div>
+
+
+<!-- Register Button -->
+<div style="text-align:center;">
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfuONigAnlX4A6Dr_40o_rnMTzzzmnWceF714ZkyYfzJIoC0A/viewform" target="_blank">Register Now</a>
+</div>
+
+   
+</main>
+
+<footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <strong>VENTORA</strong> — The Commerce Carnival</div>
+        <div style="color:var(--muted)">Designed by  ea </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

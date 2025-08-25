@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elite 11 Auction — Ventora</title>
+
+<!-- Orbitron Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #08090b;
+  --primary: #e5930f;
+  --secondary: #763904;
+  --muted: #b5b6b4;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 20px;
+  --max-width: 1100px;
+}
+
+body{
+  margin:0;
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #0c0d10 100%);
+  color:white;
+  line-height:1.4;
+}
+
+/* Container */
+.container{
+  width: min(92%, var(--max-width));
+  gap: 16px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+nav {
+  width: min(92%, var(--max-width));
+  margin: auto;
+  padding: 12px 0; /* match main navbar */
+  display: flex;
+  align-items: center;
+}
+
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+nav a:hover{
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+/* Hero Image */
+.hero-img {
+  margin: 20px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 600px; /* Limit the size */
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Title */
+h1{
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 20px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subheading {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted);
+  margin-top: 1px;
+  font-weight: 400;
+}
+
+
+/* Event Details Grid */
+.details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.detail-card{
+  background: var(--glass);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.detail-card h3{
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.detail-card p{
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+/* Description */
+.description{
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(90deg,var(--primary),#a14a04);
+  color: #061016;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+footer{
+  padding: 20px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html#events">Back to Events</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero-img">
+    <img src="../images/1.png" alt="Elite 11 Auction">
+  </div>
+
+  <!-- Title -->
+  <h1>Bizverse Revalry</h1>
+  <h2 class="subheading">unleash your business potential</h2>
+
+  <!-- Event Details -->
+  <div class="details">
+    <div class="detail-card">
+      <h3>Registration fees</h3>
+      <p>₹100 per person (minimum 3 person to 5 person)</p>
+    </div>
+    <div class="detail-card">
+      <h3>Registration ends on </h3>
+      <p>8 Sep 2025</p>
+    </div>
+    <div class="detail-card">
+      <h3>Prize pool</h3>
+      <p> ₹4000 </p>
+    </div>
+  </div>
+
+<!-- Description -->
+<div class="description">
+  <p>
+    A game focused on <strong>business planning</strong> and <strong>brand innovation</strong>, built around unique scenarios provided by our coordinators.  
+    Your <strong>creativity</strong> and <strong>entrepreneurial skills</strong> will be tested across 4 exciting stages.  
+    To become the <em>final entrepreneur</em>, you must successfully complete every challenge and <strong>unleash your potential</strong>!
+  </p>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Stage 1 – Base Scenario</h3>
+  <ul>
+    <li>A base scenario will be given.</li>
+    <li>Conducted in <strong>two rounds</strong>:</li>
+    <ul>
+      <li><strong>Round 1:</strong> Innovate a product based on the given scenario (10 minutes).</li>
+      <li><strong>Round 2:</strong> Introduce the product.</li>
+    </ul>
+    <li>No use of phones, laptops, or search engines.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Stage 2 – Product Development</h3>
+  <ul>
+    <li>Develop your product with your team members.</li>
+    <li>Complete all business strategies (planning, organizing, etc.).</li>
+    <li>Decide on:
+      <ul>
+        <li>Profit</li>
+        <li>Capital</li>
+        <li>Team members</li>
+        <li>Shares to the public</li>
+        <li>Product name & tagline</li>
+      </ul>
+    </li>
+    <li>Time limit: 15 minutes.</li>
+    <li>No use of phones or search engines.</li>
+    <li>Complete the provided questionnaire (Google Form) within the allotted time.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Stage 3 – Digital Branding</h3>
+  <ul>
+    <li>Phones, laptops, and search engines <strong>allowed</strong>.</li>
+    <li>Prepare:
+      <ul>
+        <li>A brand logo</li>
+        <li>A short PPT presentation (2–3 minutes)</li>
+      </ul>
+    </li>
+    <li>Total time: 30 minutes (including preparation and presentation).</li>
+    <li>Present in front of judges.</li>
+    <li>The best logo & PPT teams will move on to the final stage.</li>
+  </ul>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Stage 4 – The Final Debate</h3>
+  <ul>
+    <li><strong>Only 2 teams</strong> will be selected.</li>
+    <li>Debate topic will be based on the given scenario.</li>
+    <li>Include all merits, strategies, and relevance in your arguments.</li>
+  </ul>
+</div>
+
+
+<!-- Register Button -->
+<div style="text-align:center;">
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfuONigAnlX4A6Dr_40o_rnMTzzzmnWceF714ZkyYfzJIoC0A/viewform" target="_blank">Register Now</a>
+</div>
+
+   
+</main>
+
+<footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <strong>VENTORA</strong> — The Commerce Carnival</div>
+        <div style="color:var(--muted)">Designed by  ea </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

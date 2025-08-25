@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elite 11 Auction — Ventora</title>
+
+<!-- Orbitron Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #08090b;
+  --primary: #e5930f;
+  --secondary: #763904;
+  --muted: #b5b6b4;
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --radius: 20px;
+  --max-width: 1100px;
+}
+
+body{
+  margin:0;
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #0c0d10 100%);
+  color:white;
+  line-height:1.4;
+}
+
+/* Container */
+.container{
+  width: min(92%, var(--max-width));
+  gap: 16px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+nav {
+  width: min(92%, var(--max-width));
+  margin: auto;
+  padding: 12px 0; /* match main navbar */
+  display: flex;
+  align-items: center;
+}
+
+nav a{
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+nav a:hover{
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+/* Hero Image */
+.hero-img {
+  margin: 20px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 600px; /* Limit the size */
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Title */
+h1{
+  font-size: clamp(28px, 4vw, 40px);
+  margin-top: 20px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subheading {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--muted);
+  margin-top: 1px;
+  font-weight: 400;
+}
+
+
+/* Event Details Grid */
+.details{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.detail-card{
+  background: var(--glass);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.detail-card h3{
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.detail-card p{
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+/* Description */
+.description{
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(90deg,var(--primary),#a14a04);
+  color: #061016;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Footer */
+footer{
+  padding: 20px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html#events">Back to Events</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero-img">
+    <img src="../images/5.png" alt="Elite 11 Auction">
+  </div>
+
+  <!-- Title -->
+  <h1>PES Fiesta 2025</h1>
+  <h2 class="subheading">Get ready to kick off your skills! </h2>
+
+  <!-- Event Details -->
+  <div class="details">
+    <div class="detail-card">
+      <h3>Registration fees</h3>
+      <p>₹100</p>
+    </div>
+    <div class="detail-card">
+      <h3>Registration ends on </h3>
+      <p>8 Sep 2025</p>
+    </div>
+    <div class="detail-card">
+      <h3>Prizes</h3>
+      <p>1st ₹5000 | 2nd ₹2000</p>
+    </div>
+  </div>
+
+<!-- Description -->
+<div class="description">
+  <p>
+    <strong>Description:</strong> May your passes be precise, your shots be strong, and your strategy be unbeatable! 
+    It's time to clash, compete, and conquer! May your reflexes be quick and your decisions be sharp. 
+    Let's make this tournament unforgettable! Show off your talent, sportsmanship, outmaneuver your opponents, and claim victory!
+  </p>
+
+  <h3 style="color:var(--primary);margin-top:20px;"> Rules & Guidelines</h3>
+  <ol>
+    <li>
+      <strong>Match Time:</strong> 6 minutes default. If the opponent changes the match settings, you can report and claim W/O before the match ends.
+      Either video proof or a screenshot is needed. You can't claim W/O after the match ends.
+    </li>
+    <li>
+      <strong>Extra Time (ET) & Penalties:</strong> ON. If the player forgets to change, you can request a rematch.
+    </li>
+    <li>
+      <strong>Match Condition:</strong> RANDOM. You cannot change the match condition without asking your opponent.
+      If reported and verified, it will be a W/O win.
+    </li>
+    <li>
+      <strong>Condition Should Be the Same:</strong> No W/O for setting the same condition instead of RANDOM. If reported, a rematch will be considered.
+    </li>
+    <li>
+      <strong>Number of Substitutions:</strong> Can be decided by yourself.
+    </li>
+    <li>
+      If there are any issues regarding matches, the <strong>committee's decision will be FINAL</strong>.
+    </li>
+  </ol>
+</div>
+
+
+<!-- Register Button -->
+<div style="text-align:center;">
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfuONigAnlX4A6Dr_40o_rnMTzzzmnWceF714ZkyYfzJIoC0A/viewform" target="_blank">Register Now</a>
+</div>
+
+   
+</main>
+
+<footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <strong>VENTORA</strong> — The Commerce Carnival</div>
+        <div style="color:var(--muted)">Designed by  ea </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
